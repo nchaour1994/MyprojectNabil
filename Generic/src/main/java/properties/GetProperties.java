@@ -1,0 +1,31 @@
+package properties;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+public class GetProperties {
+
+
+  public static Properties loadProperty() {
+      Properties property = new Properties();
+      FileInputStream fileInputStream = null;
+      try {
+          fileInputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\config.properties");
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+      }
+      try {
+          property.load(fileInputStream);
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+
+
+      return property;
+  }
+
+
+
+}
