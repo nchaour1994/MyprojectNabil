@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Walgreens]">
+  <test name="test login(failed)">
+    <classes>
+      <class name="tests.TestLogin">
+        <methods>
+          <include name="afterEachTestMethod"/>
+          <include name="tearDown"/>
+          <include name="loginWithValidCredentials"/>
+          <include name="init"/>
+          <include name="generateReport"/>
+          <include name="extentSetup"/>
+          <include name="startExtent"/>
+        </methods>
+      </class> <!-- tests.TestLogin -->
+    </classes>
+  </test> <!-- test login(failed) -->
+</suite> <!-- Failed suite [Walgreens] -->
