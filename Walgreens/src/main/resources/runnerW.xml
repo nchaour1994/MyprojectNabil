@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Walgreens" parallel="tests">
+<suite name="Walgreens">
     <parameter name="useGrid" value="true"></parameter>
 
     <test name="test login">
         <parameter name="useDocker" value="true"></parameter>
-        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="tests.TestLogin">
                 <methods>

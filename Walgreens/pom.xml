@@ -36,9 +36,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.1</version>
                 <configuration>
-                    <skipTests>false</skipTests>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <forkMode>once</forkMode>
+                    <forkCount>0</forkCount>
                     <suiteXmlFiles>
                         <suiteXmlFile>
                             C:\Users\nchao\IdeaProjects\MyprojectNabil\Walgreens\src\main\resources\runnerW.xml
