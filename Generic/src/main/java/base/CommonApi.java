@@ -9,24 +9,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import properties.GetProperties;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -37,18 +39,20 @@ import java.util.Properties;
 
 public class CommonApi {
 
-     public WebDriver driver;
+    public WebDriver driver;
     public Properties prop = GetProperties.loadProperty();
     public static com.relevantcodes.extentreports.ExtentReports extent;
+    public DesiredCapabilities capabilities = new DesiredCapabilities();
 
 
-   String titleHomePage=prop.getProperty("titleHomePage");
-   //-------------------------------------------------------
-   @BeforeSuite
-   public void extentSetup(ITestContext context) {
-       ExtentManager.setOutputDirectory(context);
-       extent = ExtentManager.getInstance();
-   }
+    String titleHomePage = prop.getProperty("titleHomePage");
+
+    //-------------------------------------------------------
+    @BeforeSuite
+    public void extentSetup(ITestContext context) {
+        ExtentManager.setOutputDirectory(context);
+        extent = ExtentManager.getInstance();
+    }
 
     @BeforeMethod
     public void startExtent(Method method) {
@@ -57,6 +61,7 @@ public class CommonApi {
         ExtentTestManager.startTest(method.getName());
         ExtentTestManager.getTest().assignCategory(className);
     }
+
     protected String getStackTrace(Throwable t) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
@@ -87,6 +92,7 @@ public class CommonApi {
         }
         driver.quit();
     }
+
     @AfterSuite
     public void generateReport() {
         extent.close();
@@ -99,59 +105,111 @@ public class CommonApi {
     }
 
 
+    //---------------------------------------------
 
+    @BeforeSuite
+    @Parameters("useGrid")
+    public void startDocker(@Optional("false") boolean useGrid) {
+        System.out.println("starting grid---------------------");
+        if (useGrid == true) {
+            try {
+                Runtime.getRuntime().exec("cmd /c start C:\\Users\\nchao\\IdeaProjects\\MyprojectNabil\\start-docker.bat");
+                Thread.sleep(15000);
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
 
-
-
-
-
-   //---------------------------------------------
-    @BeforeMethod
-    public void init() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        driver.get("https://www.walgreens.com/");
-
-        driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
-        Assert.assertEquals(titleHomePage, driver.getTitle());
-
-
+        }
     }
 
-    public void click(WebElement element){
+    @BeforeMethod
+    @Parameters({"useDocker", "browser"})
+    public void init(@Optional("false") boolean useDocker, @Optional("firefox") String browser) throws MalformedURLException {
+
+
+        if (useDocker == false) {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
+            driver.get("https://www.walgreens.com/");
+        } else {
+            if (browser.equalsIgnoreCase("firefox")) {
+                //  capabilities.setBrowserName("chrome");
+                capabilities.setBrowserName("firefox");
+                capabilities.setVersion("latest");
+                URL url = new URL("http://localhost:4444/wd/hub");
+                driver = new RemoteWebDriver(url, capabilities);
+            } else if (browser.equalsIgnoreCase("chrome")) {
+                capabilities.setBrowserName("chrome");
+                capabilities.setVersion("latest");
+                URL url = new URL("http://localhost:4444/wd/hub");
+                driver = new RemoteWebDriver(url, capabilities);
+            }
+        }
+
+
+        driver.get("https://www.walgreens.com/");
+        driver.manage().timeouts().implicitlyWait(Duration.of(10, ChronoUnit.SECONDS));
+        Assert.assertEquals(titleHomePage, driver.getTitle());
+    }
+
+    public void click(WebElement element) {
         element.click();
     }
 
-    public void waitFor(WebElement element){
-        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(3));
+    public void waitFor(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-    public void type(WebElement element,String value){
+
+    public void type(WebElement element, String value) {
         element.sendKeys(value);
 
     }
-    public void takeScreenshot(String screenshotName){
+
+    public void takeScreenshot(String screenshotName) {
         DateFormat df = new SimpleDateFormat("(MM_dd_yyyy-HH-MM-SS)");
         Date date = new Date();
         df.format(date);
 
-        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(file, new File(System.getProperty("user.dir")+ "/screenshots/"+screenshotName+" "+df.format(date)+".png"));
+            FileUtils.copyFile(file, new File(System.getProperty("user.dir") + "/screenshots/" + screenshotName + " " + df.format(date) + ".png"));
             System.out.println("Screenshot captured");
         } catch (Exception e) {
-            String path = System.getProperty("user.dir")+ "/screenshots/"+screenshotName+" "+df.format(date)+".png";
+            String path = System.getProperty("user.dir") + "/screenshots/" + screenshotName + " " + df.format(date) + ".png";
             System.out.println(path);
-            System.out.println("Exception while taking screenshot "+e.getMessage());;
+            System.out.println("Exception while taking screenshot " + e.getMessage());
+            ;
         }
     }
 
     @AfterMethod
     public void tearDown() {
         driver.quit();
+    }
+
+    @AfterSuite
+    @Parameters("useGrid")
+    public void stopDocker(@Optional("false") boolean useGrid) {
+        if (useGrid == true) {
+            try {
+                Runtime.getRuntime().exec("cmd /c start C:\\Users\\nchao\\IdeaProjects\\MyprojectNabil\\stop-docker.bat");
+
+                System.out.println("stopping grid---------------------");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
+                System.out.println("closing cmd---------------------");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
