@@ -197,18 +197,18 @@ public class CommonApi {
         if (useGrid == true) {
             try {
                 Runtime.getRuntime().exec("cmd /c start C:\\Users\\nchao\\IdeaProjects\\MyprojectNabil\\stop-docker.bat");
-
+                Thread.sleep(1500);
                 System.out.println("stopping grid---------------------");
-            } catch (IOException e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
 
-            try {
-                Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
-                System.out.println("closing cmd---------------------");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
+//                System.out.println("closing cmd---------------------");
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
     }
 
