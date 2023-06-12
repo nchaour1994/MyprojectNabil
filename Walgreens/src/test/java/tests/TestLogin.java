@@ -38,8 +38,13 @@ public class TestLogin extends CommonApi {
 
         homePage.clickOnAccountBtn();
         Assert.assertEquals("true", homePage.accountBtn.getAttribute("aria-expanded"));
-        waitFor(homePage.dropDown);
-       // Assert.assertTrue(false);
+//        waitFor(homePage.dropDown);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // Assert.assertTrue(false);
         homePage.clickOnSignInBtn();
         Assert.assertEquals(titleSignInPage, driver.getTitle());
         signInPage.typeOnEmail();
@@ -64,7 +69,12 @@ public class TestLogin extends CommonApi {
 
         homePage.clickOnAccountBtn();
         Assert.assertEquals("true", homePage.accountBtn.getAttribute("aria-expanded"));
-        waitFor(homePage.dropDown);
+      //  waitFor(homePage.dropDown);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         homePage.clickOnSignInBtn();
         Assert.assertEquals(titleSignInPage, driver.getTitle());
         signInPage.typeOnEmail();

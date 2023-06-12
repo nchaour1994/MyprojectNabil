@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -123,15 +124,20 @@ public class CommonApi {
     }
 
     @BeforeMethod
-    @Parameters({"useDocker", "browser"})
-    public void init(@Optional("false") boolean useDocker, @Optional("firefox") String browser) throws MalformedURLException {
+    @Parameters({"useDocker", "browser","localBrowser"})
+    public void init(@Optional("false") boolean useDocker, @Optional("firefox") String browser,@Optional("firefox") String localBrowser) throws MalformedURLException {
 
 
         if (useDocker == false) {
-            WebDriverManager.chromedriver().setup();
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--remote-allow-origins=*");
-            driver = new ChromeDriver(options);
+            if(localBrowser.equalsIgnoreCase("chrome")) {
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                driver = new ChromeDriver(options);
+            }else {
+                WebDriverManager.firefoxdriver().setup();
+                driver=new FirefoxDriver();
+            }
             driver.manage().window().maximize();
             driver.get("https://www.walgreens.com/");
         } else {
@@ -139,12 +145,12 @@ public class CommonApi {
                 //  capabilities.setBrowserName("chrome");
                 capabilities.setBrowserName("firefox");
                 capabilities.setVersion("latest");
-                URL url = new URL("http://localhost:4444/wd/hub");
+                URL url = new URL("http://54.89.222.29:4444/wd/hub");
                 driver = new RemoteWebDriver(url, capabilities);
             } else if (browser.equalsIgnoreCase("chrome")) {
                 capabilities.setBrowserName("chrome");
                 capabilities.setVersion("latest");
-                URL url = new URL("http://localhost:4444/wd/hub");
+                URL url = new URL("http://54.89.222.29:4444/wd/hub");
                 driver = new RemoteWebDriver(url, capabilities);
             }
         }
@@ -160,7 +166,7 @@ public class CommonApi {
     }
 
     public void waitFor(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(9));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
