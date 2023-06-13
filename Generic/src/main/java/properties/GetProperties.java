@@ -12,7 +12,7 @@ public class GetProperties {
       Properties property = new Properties();
       FileInputStream fileInputStream = null;
       try {
-          fileInputStream = new FileInputStream("MyprojectNabil\\Walgreens\\src\\main\\resources\\config.properties");
+          fileInputStream = new FileInputStream(" ../Walgreens/src/main/resources/runnerW.xml");
       } catch (FileNotFoundException e) {
           e.printStackTrace();
       }
