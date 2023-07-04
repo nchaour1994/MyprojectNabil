@@ -6,12 +6,12 @@ phases:
       docker: 19
       commands:
         - echo "Installing dependencies..."
-          - apt-get update -y
-          - apt-get install -y software-properties-common
-          - add-apt-repository ppa:openjdk-r/ppa
-          - apt-get update -y
-          - apt-get install -y openjdk-8-jdk
-          - apt-get install -y maven
+        - apt-get update -y
+        - apt-get install -y software-properties-common
+        - add-apt-repository ppa:openjdk-r/ppa
+        - apt-get update -y
+        - apt-get install -y openjdk-8-jdk
+        - apt-get install -y maven
         # Install any dependencies required for your project here
 
 
