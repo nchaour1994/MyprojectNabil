@@ -11,13 +11,13 @@ phases:
   pre_build:
     commands:
       - echo "Building Docker image..."
-      - docker build -t aws/codebuild/standard:7.0  .
+
       # Replace 'myproject' with your Docker image name
 
   build:
     commands:
       - echo "Running Maven tests..."
-      - docker run --rm MyprojectNabil mvn test
+      - mvn test
       # Replace 'myproject' with your Docker image name
 
 artifacts:
