@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+    <line>
+      <![CDATA[Extent Report DirectoryC:\Users\nchao\IdeaProjects\MyprojectNabil\Walgreens\target\surefire-reports\html]]>
+    </line>
+  </reporter-output>
+  <suite name="Walgreens" duration-ms="72240" started-at="2023-06-12T23:34:09Z" finished-at="2023-06-12T23:35:21Z">
+    <groups>
+    </groups>
+    <test name="test login invalid " duration-ms="31360" started-at="2023-06-12T23:34:09Z" finished-at="2023-06-12T23:34:41Z">
+      <class name="tests.TestLogin">
+        <test-method status="PASS" signature="init(boolean, java.lang.String, java.lang.String)[pri:0, instance:tests.TestLogin@43c39321]" name="init" is-config="true" duration-ms="20022" started-at="2023-06-12T19:34:09Z" finished-at="2023-06-12T19:34:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="startExtent(java.lang.reflect.Method)[pri:0, instance:tests.TestLogin@43c39321]" name="startExtent" is-config="true" duration-ms="5" started-at="2023-06-12T19:34:29Z" finished-at="2023-06-12T19:34:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void tests.TestLogin.loginWithInValidCredentials() throws java.net.MalformedURLException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startExtent -->
+        <test-method status="PASS" signature="loginWithInValidCredentials()[pri:0, instance:tests.TestLogin@43c39321]" name="loginWithInValidCredentials" duration-ms="10170" started-at="2023-06-12T19:34:29Z" finished-at="2023-06-12T19:34:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithInValidCredentials -->
+        <test-method status="PASS" signature="afterEachTestMethod(org.testng.ITestResult)[pri:0, instance:tests.TestLogin@43c39321]" name="afterEachTestMethod" is-config="true" duration-ms="1151" started-at="2023-06-12T19:34:39Z" finished-at="2023-06-12T19:34:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=loginWithInValidCredentials status=SUCCESS method=TestLogin.loginWithInValidCredentials()[pri:0, instance:tests.TestLogin@43c39321] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTestMethod -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:tests.TestLogin@43c39321]" name="tearDown" is-config="true" duration-ms="1" started-at="2023-06-12T19:34:41Z" finished-at="2023-06-12T19:34:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- tests.TestLogin -->
+    </test> <!-- test login invalid  -->
+    <test name="test login valid" duration-ms="40865" started-at="2023-06-12T23:34:41Z" finished-at="2023-06-12T23:35:21Z">
+      <class name="tests.TestLogin">
+        <test-method status="PASS" signature="extentSetup(org.testng.ITestContext)[pri:0, instance:tests.TestLogin@2a136383]" name="extentSetup" is-config="true" duration-ms="120" started-at="2023-06-12T19:34:09Z" finished-at="2023-06-12T19:34:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@5e0442dd]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Extent Report DirectoryC:\Users\nchao\IdeaProjects\MyprojectNabil\Walgreens\target\surefire-reports\html]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- extentSetup -->
+        <test-method status="PASS" signature="startDocker(boolean)[pri:0, instance:tests.TestLogin@2a136383]" name="startDocker" is-config="true" duration-ms="2" started-at="2023-06-12T19:34:09Z" finished-at="2023-06-12T19:34:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startDocker -->
+        <test-method status="PASS" signature="init(boolean, java.lang.String, java.lang.String)[pri:0, instance:tests.TestLogin@2a136383]" name="init" is-config="true" duration-ms="29066" started-at="2023-06-12T19:34:41Z" finished-at="2023-06-12T19:35:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="loginWithValidCredentials()[pri:0, instance:tests.TestLogin@2a136383]" name="loginWithValidCredentials" duration-ms="11012" started-at="2023-06-12T19:35:10Z" finished-at="2023-06-12T19:35:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginWithValidCredentials -->
+        <test-method status="PASS" signature="startExtent(java.lang.reflect.Method)[pri:0, instance:tests.TestLogin@2a136383]" name="startExtent" is-config="true" duration-ms="0" started-at="2023-06-12T19:35:10Z" finished-at="2023-06-12T19:35:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void tests.TestLogin.loginWithValidCredentials()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startExtent -->
+        <test-method status="PASS" signature="afterEachTestMethod(org.testng.ITestResult)[pri:0, instance:tests.TestLogin@2a136383]" name="afterEachTestMethod" is-config="true" duration-ms="786" started-at="2023-06-12T19:35:21Z" finished-at="2023-06-12T19:35:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=loginWithValidCredentials status=SUCCESS method=TestLogin.loginWithValidCredentials()[pri:0, instance:tests.TestLogin@2a136383] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTestMethod -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:tests.TestLogin@2a136383]" name="tearDown" is-config="true" duration-ms="1" started-at="2023-06-12T19:35:21Z" finished-at="2023-06-12T19:35:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="generateReport()[pri:0, instance:tests.TestLogin@2a136383]" name="generateReport" is-config="true" duration-ms="31" started-at="2023-06-12T19:35:21Z" finished-at="2023-06-12T19:35:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateReport -->
+        <test-method status="PASS" signature="stopDocker(boolean)[pri:0, instance:tests.TestLogin@2a136383]" name="stopDocker" is-config="true" duration-ms="0" started-at="2023-06-12T19:35:21Z" finished-at="2023-06-12T19:35:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[false]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopDocker -->
+      </class> <!-- tests.TestLogin -->
+    </test> <!-- test login valid -->
+  </suite> <!-- Walgreens -->
+</testng-results>

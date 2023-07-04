@@ -1,0 +1,6 @@
+reporting\TestLogger.class
+base\CommonApi.class
+reporting\ExtentManager.class
+reporting\ExtentTestManager.class
+reporting\ApplicationLog.class
+properties\GetProperties.class

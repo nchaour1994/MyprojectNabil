@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Walgreens">
+    <parameter name="useGrid" value="false"></parameter>
+
+    <test name="test login invalid ">
+        <parameter name="useDocker" value="false"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="localBrowser" value="chrome"></parameter>
+        <classes>
+            <class name="tests.TestLogin">
+                <methods>
+                    <include name="loginWithInValidCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="test login valid">
+        <parameter name="useDocker" value="false"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="localBrowser" value="chrome"></parameter>
+        <classes>
+            <class name="tests.TestLogin">
+                <methods>
+                    <include name="loginWithValidCredentials"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+</suite>
