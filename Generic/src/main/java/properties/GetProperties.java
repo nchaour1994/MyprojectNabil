@@ -11,11 +11,11 @@ public class GetProperties {
   public static Properties loadProperty() {
       Properties property = new Properties();
       FileInputStream fileInputStream = null;
-      try {
-          fileInputStream = new FileInputStream("../Walgreens/src/main/resources/config.properties");
-      } catch (FileNotFoundException e) {
-          e.printStackTrace();
-      }
+//      try {
+//        //  fileInputStream = new FileInputStream("../Walgreens/src/main/resources/config.properties");
+//      } catch (FileNotFoundException e) {
+//          e.printStackTrace();
+//      }
       try {
           property.load(fileInputStream);
       } catch (IOException e) {
