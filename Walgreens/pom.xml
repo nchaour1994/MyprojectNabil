@@ -39,7 +39,7 @@
                     <forkCount>0</forkCount>
                     <suiteXmlFiles>
                         <suiteXmlFile>
-                            C:\Users\nchao\IdeaProjects\MyprojectNabil\Walgreens\src\main\resources\runnerW.xml
+                           ../Walgreens\src\main\resources\runnerW.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
