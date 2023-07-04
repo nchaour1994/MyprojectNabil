@@ -8,11 +8,11 @@ phases:
 #      - echo "Installing dependencies..."
 #      # Install any dependencies required for your project here
 #
-#  pre_build:
-#    commands:
-#      - echo "Building Docker image..."
-#      - docker build -t  .
-#      # Replace 'myproject' with your Docker image name
+  pre_build:
+    commands:
+      - echo "Building Docker image..."
+      - docker build -t aws/codebuild/standard:7.0  .
+      # Replace 'myproject' with your Docker image name
 
   build:
     commands:
