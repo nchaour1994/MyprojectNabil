@@ -1,28 +1,43 @@
-version: 0.2
+#version: 0.2
+#
+#phases:
+#  install:
+#    runtime-versions:
+#      commands:
+#        -echo "Installing dependencies..."
+#        -sudo apt update
+#        -sudo apt install default-jdk
+#        -sudo apt install maven
+#        # Install any dependencies required for your project here
+#
+#
+#
+#  pre_build:
+#    commands:
+#      - echo "Building Docker image..."
+#
+#      # Replace 'myproject' with your Docker image name
+#
+#  build:
+#    commands:
+#      - echo "Running Maven tests..."
+#      - mvn clean install
+#      # Replace 'myproject' with your Docker image name
+#
+#artifacts:
+#  files:
+#    - '**/*'
+version: 0.1
 
 phases:
   install:
-    runtime-versions:
-      commands:
-        -echo "Installing dependencies..."
-        -sudo apt update
-        -sudo apt install default-jdk
-        -sudo apt install maven
-        # Install any dependencies required for your project here
-
-
-
-  pre_build:
     commands:
-      - echo "Building Docker image..."
-
-      # Replace 'myproject' with your Docker image name
-
+      - echo installing maven...
+      - yum install -y maven
   build:
     commands:
-      - echo "Running Maven tests..."
-      - mvn clean install
-      # Replace 'myproject' with your Docker image name
+      - echo Build completed on `date`
+      - mvn clean test package
 
 artifacts:
   files:
