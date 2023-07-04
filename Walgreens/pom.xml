@@ -39,7 +39,7 @@
                     <forkCount>0</forkCount>
                     <suiteXmlFiles>
                         <suiteXmlFile>
-                            ../Walgreens\src\main\resources\runnerW.xml
+                           MyprojectNabil\Walgreens\pom.xml
                         </suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
