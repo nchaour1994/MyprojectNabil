@@ -38,7 +38,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - cd Walgreens
-      - mvn clean install -x
+      - mvn clean install -X
 
 artifacts:
   files:
